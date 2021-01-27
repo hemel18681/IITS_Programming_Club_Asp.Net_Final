@@ -1,34 +1,45 @@
 ﻿@model IEnumerable<IITS_Programming_Club.Models.Notice>
+@using Microsoft.AspNetCore.Http;
+@using IITS_Programming_Club.Models;
 
     <div class="container">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.date)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.notice)
-                    </th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
+        @{
+                string s = Context.Session.GetString("adminid");
+                if (s == null)
                 {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.date)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.notice)
-                        </td>
-                        <td>
-                            <a onclick="return confirm('Are you sure you want to delete @item.notice_id?')" asp-controller="Admin" asp-action="DeleteNotice" asp-route-id="@item.notice_id">Delete</a>
-                        </td>
-                    </tr>
+                    @:Please login First
                 }
-            </tbody>
-        </table>
-
+                else
+                {
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.date)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.notice)
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.date)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.notice)
+                                    </td>
+                                    <td>
+                                        <a onclick="return confirm('Are you sure you want to delete @item.notice_id?')" asp-controller="Admin" asp-action="DeleteNotice" asp-route-id="@item.notice_id">Delete</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+            }
     </div>

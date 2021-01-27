@@ -40,7 +40,6 @@ namespace IITS_Programming_Club.Controllers
         public IActionResult Index(StudentInfo af)
         {
             string msgg;
-            string cheak = "on";
             var account = db.student_info.Where(a => a.student_id == af.student_id).FirstOrDefault();
             if (account != null)
             {

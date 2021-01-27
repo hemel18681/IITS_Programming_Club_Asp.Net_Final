@@ -33,7 +33,7 @@ namespace IITS_Programming_Club.Controllers
             {
                stu =  dbh.student_info.Where(a => a.student_id == prog.id).FirstOrDefault();
             }
-            catch(Exception e)
+            catch(Exception)
             {
                 stu = null;
             }

@@ -1,6 +1,16 @@
 ﻿@model IEnumerable<IITS_Programming_Club.Models.Programmer>
+@using Microsoft.AspNetCore.Http;
+@using IITS_Programming_Club.Models;
 
     <div class="container">
+        @{
+            string s = Context.Session.GetString("adminid");
+            if (s == null)
+            {
+                @:Please login First
+            }
+                else
+                {
         <table class="table">
             <thead>
                 <tr>
@@ -36,5 +46,8 @@
                 }
             </tbody>
         </table>
+                }
+            }
+                
 
-    </div>
+            </div>
