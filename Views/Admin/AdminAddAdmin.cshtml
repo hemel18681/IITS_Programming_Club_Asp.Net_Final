@@ -1,0 +1,48 @@
+﻿
+@{
+    Layout = "_Layout";
+}
+
+@model IITS_Programming_Club.Models.Admin
+@using Microsoft.AspNetCore.Http;
+@using IITS_Programming_Club.Models;
+
+    <div class="container">
+        @{
+            string s = Context.Session.GetString("adminid");
+            if (s == null)
+            {
+                @:Please login First
+            }
+            else
+            {
+                <h4>NoticeAndEvent</h4>
+                <hr />
+                <form method="post" asp-controller="admin" asp-action="addadmin">
+                    @ViewBag.message
+                    <table cellpadding="2" cellspacing="2">
+                        <tr>
+                            <td>Admin ID</td>
+                            <td>
+                                <input type="text" asp-for="admin_id" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Password</td>
+                            <td>
+                                <input type="password" asp-for="admin_pass" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>
+                                <input type="submit" value="ADD" />
+                            </td>
+                        </tr>
+                    </table>
+
+                </form>
+            }
+        }
+    </div>
+

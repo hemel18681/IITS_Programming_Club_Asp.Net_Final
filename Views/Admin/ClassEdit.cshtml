@@ -1,0 +1,64 @@
+﻿@model IITS_Programming_Club.Models.ClassSchedule
+
+    <div class="container">
+        <h4>ClassSchedule</h4>
+        <hr />
+        <div class="row">
+            <div class="col-md-4">
+                <form asp-action="ClassEdit">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="key" />
+                    <div class="form-group">
+                        <label asp-for="group" value="@Model.group" class="control-label"></label>
+                        <input hidden asp-for="group" />
+                        <label asp-for="group" class="form-control">@Model.group</label>
+                        <span asp-validation-for="group" value="@Model.group" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="room_no" value="@Model.room_no" class="control-label"></label>
+                        <input hidden asp-for="room_no" />
+                        <label asp-for="room_no" class="form-control">@Model.room_no</label>
+                        <span asp-validation-for="room_no" value="@Model.room_no" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="time" value="@Model.time" class="control-label"></label>
+                        <input hidden asp-for="time" />
+                        <label asp-for="time" class="form-control">@Model.time</label>
+                        <span asp-validation-for="time" value="@Model.time" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="date" value="@Model.date" class="control-label"></label>
+                        <input hidden asp-for="date" />
+                        <label asp-for="date" class="form-control">@Model.date</label>
+                        <span asp-validation-for="date" value="@Model.date" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="change_plan" class="control-label"></label>
+                        <input asp-for="change_plan" class="form-control" />
+                        <span asp-validation-for="change_plan" class="text-danger"></span>
+                    </div>
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="isDone" /> @Html.DisplayNameFor(model => model.isDone)
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="remarks" class="control-label"></label>
+                        <input asp-for="remarks" class="form-control" />
+                        <span asp-validation-for="remarks" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div>
+            <a asp-action="AdminWork">Back to List</a>
+        </div>
+    </div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

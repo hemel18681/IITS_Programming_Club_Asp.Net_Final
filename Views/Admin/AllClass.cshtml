@@ -1,0 +1,63 @@
+﻿@model IEnumerable<IITS_Programming_Club.Models.ClassSchedule>
+
+    <div class="container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.group)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.room_no)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.time)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.date)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.change_plan)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.isDone)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.remarks)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.group)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.room_no)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.time)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.date)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.change_plan)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.isDone)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.remarks)
+                        </td>
+                        <td>
+                            <a asp-controller="admin" asp-action="ClassEdit" asp-route-id="@item.key">Edit</a> |
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>

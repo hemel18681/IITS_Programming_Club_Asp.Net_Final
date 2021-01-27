@@ -1,0 +1,42 @@
+﻿@model IITS_Programming_Club.Models.Programmer
+
+    <div class="container">
+        <h4>Programmer</h4>
+        <hr />
+        <div class="row">
+            <div class="col-md-4">
+                <form asp-action="ProgrammerEdit">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="key" />
+                    <div class="form-group">
+                        <label asp-for="week" value="@Model.week" class="control-label"></label>
+                        <input hidden asp-for="week" />
+                        <label asp-for="week" class="form-control">@Model.week</label>
+                        <span asp-validation-for="week" value="@Model.week" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="id" value="@Model.id" class="control-label"></label>
+                        <input hidden asp-for="id" />
+                        <label asp-for="id" class="form-control">@Model.id</label>
+                        <span asp-validation-for="id" value="@Model.id" class="text-danger"></span>
+                    </div>
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="isDone" /> @Html.DisplayNameFor(model => model.isDone)
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div>
+            <a asp-action="AdminWork">Back to List</a>
+        </div>
+    </div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

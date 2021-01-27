@@ -1,0 +1,40 @@
+﻿@model IEnumerable<IITS_Programming_Club.Models.Programmer>
+
+    <div class="container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.week)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.id)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.isDone)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.week)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.isDone)
+                        </td>
+                        <td>
+                            <a asp-controller="Admin" asp-action="ProgrammerEdit" asp-route-id="@item.key">Edit</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>

@@ -1,0 +1,49 @@
+﻿@model IEnumerable<IITS_Programming_Club.Models.ToDoList>
+
+@using Microsoft.AspNetCore.Http;
+@using IITS_Programming_Club.Models;
+
+    <div class="container">
+
+        @if (Model == null)
+        {
+            <p>
+                You Don't have any To Do List. If you want to then create on so that you can solve that problem later. Happy Coding!!
+            </p>
+        }
+        else
+        {
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.problem_link)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.isdone)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.problem_link)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.isdone)
+                            </td>
+                            <td>
+                                <a asp-controller="student" asp-action="EditToDo" asp-route-id="@item.id">Edit</a> |
+                                <a asp-action="DeleteToDo" asp-route-id="@item.id">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        }
+
+    </div>

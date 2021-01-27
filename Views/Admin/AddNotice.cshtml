@@ -1,0 +1,57 @@
+﻿@model IITS_Programming_Club.Models.Notice
+@{
+    Layout = "_Layout";
+}
+@using Microsoft.AspNetCore.Http;
+@using IITS_Programming_Club.Models;
+
+    <div class="container">
+        @{
+            string s = Context.Session.GetString("adminid");
+            if (s == null)
+            {
+                @:Please login First
+            }
+            else
+            {
+                <h4>NoticeAndEvent</h4>
+                <hr />
+                <div class="row">
+                    <div class="col-md-4">
+                        @ViewBag.message
+                        <form asp-action="AddNotice">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="form-group">
+                                <label asp-for="notice_id" class="control-label"></label>
+                                <input asp-for="notice_id" class="form-control" />
+                                <span asp-validation-for="notice_id" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="date" class="control-label"></label>
+                                <input asp-for="date" class="form-control" />
+                                <span asp-validation-for="date" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="notice" class="control-label"></label>
+                                <input asp-for="notice" class="form-control" />
+                                <span asp-validation-for="notice" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" value="Save" class="btn btn-primary" />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div>
+                    <a asp-action="AdminWork">Back to Admin Work Panel</a>
+                </div>
+            }
+        }
+
+
+    </div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,35 @@
+﻿@model IEnumerable<IITS_Programming_Club.Models.Notice>
+    <div class="container">
+        <p>
+            <h4>
+                Notice Panel
+            </h4>
+        </p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.date)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.notice)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.date)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.notice)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>

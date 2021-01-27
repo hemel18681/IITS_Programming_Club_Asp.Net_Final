@@ -1,0 +1,100 @@
+﻿@model IEnumerable<IITS_Programming_Club.Models.StudentInfo>
+
+    <div class="container">
+        <form method="post" asp-controller="admin" asp-action="searchstudent">
+            @ViewBag.message
+            <p>
+                Search the Student Id for the Details and Reset His/Her Password or change the Active Status
+            </p>
+            <table cellpadding="2" cellspacing="2">
+                <tr>
+                    <td>Student ID</td>
+                    <td>
+                        <input type="text" name="id" placeholder="id" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>
+                        <input type="submit" value="Search" />
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+    <div class="container">
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.student_name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.student_id)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.student_division)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.student_status)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.codeforces_handle)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.codechef_handle)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.vjudge_handle)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.atcoder_handle)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.hackerrank_handle)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.student_name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.student_id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.student_division)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.student_status)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.codeforces_handle)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.codechef_handle)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.vjudge_handle)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.atcoder_handle)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.hackerrank_handle)
+                        </td>
+                        <td>
+                            <a onclick="return confirm('Are you sure you want to delete @item.student_id?')" asp-controller="Admin" asp-action="DeleteStudent" asp-route-id="@item.student_id">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>

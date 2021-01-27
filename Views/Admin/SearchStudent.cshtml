@@ -1,0 +1,73 @@
+﻿@model IEnumerable<IITS_Programming_Club.Models.StudentInfo>
+
+
+    <div class="container">
+        <p>
+            Press the change button to Change the Student's Division or Actice Status or Reset his/her Password
+        </p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.student_name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.student_division)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.student_status)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.codeforces_handle)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.codechef_handle)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.vjudge_handle)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.atcoder_handle)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.hackerrank_handle)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.student_name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.student_division)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.student_status)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.codeforces_handle)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.codechef_handle)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.vjudge_handle)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.atcoder_handle)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.hackerrank_handle)
+                        </td>
+                        <td>
+                            <a asp-action="ResetPassStudent" asp-route-id="@item.student_id">Change</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>

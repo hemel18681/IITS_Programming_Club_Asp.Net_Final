@@ -1,0 +1,72 @@
+﻿@model IITS_Programming_Club.Models.StudentInfo
+
+    <div class="container">
+        <h4>StudentInfo</h4>
+        <hr />
+        <div class="row">
+            <div class="col-md-4">
+                @ViewBag.message
+                <form asp-action="EditProfile">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="student_name" class="control-label"></label>
+                        <input asp-for="student_name" class="form-control" />
+                        <span asp-validation-for="student_name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="student_id" value="@Model.student_id" class="control-label"></label>
+                        <input hidden asp-for="student_id" value="@Model.student_id" />
+                        <label asp-for="student_id" class="form-control">@Model.student_id</label>
+                        <span asp-validation-for="student_id" value="@Model.student_id" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="student_pass" class="control-label"></label>
+                        <input asp-for="student_pass" class="form-control" />
+                        <span asp-validation-for="student_pass" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="student_division" value="@Model.student_division" class="control-label"></label>
+                        <input hidden asp-for="student_division" />
+                        <label asp-for="student_division" class="form-control">@Model.student_division</label>
+                        <span asp-validation-for="student_division" value="@Model.student_division" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="codeforces_handle" class="control-label"></label>
+                        <input asp-for="codeforces_handle" class="form-control" />
+                        <span asp-validation-for="codeforces_handle" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="codechef_handle" class="control-label"></label>
+                        <input asp-for="codechef_handle" class="form-control" />
+                        <span asp-validation-for="codechef_handle" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="vjudge_handle" class="control-label"></label>
+                        <input asp-for="vjudge_handle" class="form-control" />
+                        <span asp-validation-for="vjudge_handle" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="atcoder_handle" class="control-label"></label>
+                        <input asp-for="atcoder_handle" class="form-control" />
+                        <span asp-validation-for="atcoder_handle" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="hackerrank_handle" class="control-label"></label>
+                        <input asp-for="hackerrank_handle" class="form-control" />
+                        <span asp-validation-for="hackerrank_handle" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div>
+            <a asp-controller="Student" asp-action="StudentWork">Back to Work Panel</a>
+        </div>
+    </div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

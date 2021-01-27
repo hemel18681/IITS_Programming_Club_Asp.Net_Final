@@ -1,0 +1,52 @@
+﻿
+@{
+    Layout = "_Layout";
+}
+@using Microsoft.AspNetCore.Http;
+@using IITS_Programming_Club.Models;
+@model IEnumerable<IITS_Programming_Club.Models.Admin>
+<!DOCTYPE html>
+
+<div class="container">
+    @{
+        string s = Context.Session.GetString("adminid");
+        if (s == null)
+        {
+            @:Please login First
+        }
+        else
+        {
+            @:Welcome @Context.Session.GetString("adminid")
+            <br />
+            <a asp-controller="Admin" asp-action="EditProfile" asp-route-id="@Context.Session.GetString("adminid")">Edit Profile</a>
+            <br />
+            <a asp-controller="Admin" asp-action="addadmin">Add an Admin</a>
+            <br />
+            <a asp-controller="Admin" asp-action="addstudent">Add a Student</a>
+            <br />
+            <a asp-controller="Admin" asp-action="addnotice">Add a Notice</a>
+            <br />
+            <a asp-controller="Admin" asp-action="allnotice">View All Notice and Delete</a>
+            <br />
+            <a asp-controller="Admin" asp-action="addevent">Add a Event</a>
+            <br />
+            <a asp-controller="Admin" asp-action="allevent">View All Event and Delete</a>
+            <br />
+            <a asp-controller="Admin" asp-action="addprogrammer">Add Programmer of this week</a>
+            <br />
+            <a asp-controller="Admin" asp-action="allprogrammer">View all Programmer of all week</a>
+            <br />
+            <a asp-controller="Admin" asp-action="addclass">Add Class of this week</a>
+            <br />
+            <a asp-controller="Admin" asp-action="allclass">View all Class of all week</a>
+            <br />
+            <a asp-controller="Admin" asp-action="allcomplain">View All Complain and Delete</a>
+            <br />
+            <a asp-controller="Admin" asp-action="alladmin">View All Admin or Search an Admin or Delete an Admin or Reset Password for an Admin</a>
+            <br />
+            <a asp-controller="Admin" asp-action="allstudent">View All Student or Search a Student or Delete a Student or (Reset Password/Change Division/Active Status) for an Student</a>
+            <br />
+            <a asp-controller="Admin" asp-action="logout">Logout</a>
+        }
+    }
+</div>

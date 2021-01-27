@@ -1,0 +1,48 @@
+﻿@model IEnumerable<IITS_Programming_Club.Models.Admin>
+
+
+
+    <div class="container">
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.admin_name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.admin_phone)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.admin_mail)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.admin_address)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.admin_name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.admin_phone)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.admin_mail)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.admin_address)
+                        </td>
+                        <td>
+                            <a asp-controller="admin" asp-action="resetpassadmin" asp-route-id="@item.admin_id">Reset Password</a> |
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>

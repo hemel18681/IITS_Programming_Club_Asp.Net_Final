@@ -1,0 +1,55 @@
+﻿@model IEnumerable<IITS_Programming_Club.Models.Event>
+    <div class="container">
+
+        <p>
+            <h4>
+                All Event With Details
+            </h4>
+        </p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.event_name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.event_link)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.event_for)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.date)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.winner)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.event_name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.event_link)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.event_for)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.date)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.winner)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+

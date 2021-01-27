@@ -1,0 +1,41 @@
+﻿@model IITS_Programming_Club.Models.ToDoList
+    <div class="container">
+
+        <h4>ToDoList</h4>
+        <hr />
+        <div class="row">
+            <div class="col-md-4">
+                <form asp-action="EditToDo">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="id" />
+                    <div class="form-group">
+                        <label asp-for="problem_link" class="control-label"></label>
+                        <input asp-for="problem_link" class="form-control" />
+                        <span asp-validation-for="problem_link" class="text-danger"></span>
+                    </div>
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="isdone" /> @Html.DisplayNameFor(model => model.isdone)
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="student_id" value="@Model.student_id" class="control-label"></label>
+                        <input hidden asp-for="student_id" />
+                        <label asp-for="student_id" class="form-control">@Model.student_id</label>
+                        <span asp-validation-for="student_id" value="@Model.student_id" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div>
+            <a asp-action="Index">Back to List</a>
+        </div>
+    </div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

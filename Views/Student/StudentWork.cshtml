@@ -1,0 +1,24 @@
+﻿
+@{
+    Layout = "_Layout";
+}
+@using Microsoft.AspNetCore.Http;
+@using IITS_Programming_Club.Models;
+@model IEnumerable<IITS_Programming_Club.Models.StudentInfo>
+
+    <div class="container">
+            Welcome @Context.Session.GetString("studentid")
+            <br />
+            <a asp-controller="Student" asp-action="EditProfile" asp-route-id="@Context.Session.GetString("studentid")">Edit Profile</a>
+            <br />
+            <a asp-controller="Student" asp-action="addcomplain">Make any Complain or Advice</a>
+            <br />
+            <a asp-controller="Student" asp-action="CreateToDo" asp-route-id="@Context.Session.GetString("studentid")">Add a Problem into To Do list</a>
+            <br />
+            <a asp-controller="Student" asp-action="StudentToDo" asp-route-id="@Context.Session.GetString("studentid")">View my Problem To Do List</a>
+            <br />
+            <a asp-controller="Student" asp-action="logout">Logout</a>
+            <p>
+                @ViewBag.message
+            </p>
+    </div>
