@@ -298,7 +298,7 @@ namespace IITS_Programming_Club.Controllers
             }
             else
             {
-                msg = "Already exist as an Notice ID.";
+                msg = "Already exist as a student...!";
             }
             ViewBag.message = msg;
             return View("AddStudent");
@@ -510,9 +510,18 @@ namespace IITS_Programming_Club.Controllers
             var account = db.prog_of_week.Where(a => a.week == ntc.week).FirstOrDefault();
             if (account == null)
             {
-                db.prog_of_week.Add(ntc);
-                db.SaveChanges();
-                return RedirectToAction("AdminWork");
+                var ch = db.student_info.Where(a => a.student_id == ntc.id).FirstOrDefault();
+                if (ch == null)
+                {
+                    msg = "This Student is not registered.";
+                    return RedirectToAction("AddProgrammer");
+                }
+                else
+                {
+                    db.prog_of_week.Add(ntc);
+                    db.SaveChanges();
+                    return RedirectToAction("AdminWork");
+                }
             }
             else
             {

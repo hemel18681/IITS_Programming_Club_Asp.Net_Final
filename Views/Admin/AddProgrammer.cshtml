@@ -2,6 +2,7 @@
 @using Microsoft.AspNetCore.Http;
 @using IITS_Programming_Club.Models;
 <div class="container">
+    @ViewBag.message
     @{
         string s = Context.Session.GetString("adminid");
         if (s == null)
